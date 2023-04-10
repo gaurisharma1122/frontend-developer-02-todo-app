@@ -58,10 +58,10 @@ ul{
   background-color: #000;
   color: #fff;
 }
-.todolist-container{
+.todolist-container, .footer-container{
   width: 60%;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding-top: 2rem;
 }
 .todo{
   background-color: #302f2f;
@@ -87,8 +87,36 @@ ul{
   color: #D70040;
   cursor: pointer;
 }
+.footer-container{
+  background-color: #302f2f;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+  color: #9b9b9b;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-container ul {
+  display: flex;
+}
+.footer-container ul li{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.footer-container ul li:hover{
+  color: rgb(83, 83, 238);
+}
+.clear-btn{
+  cursor: pointer;
+}
+.clear-btn:hover{
+  color: #D70040;
+}
+.active-btn{
+  color: rgb(83, 83, 238);
+}
 @media screen and (max-width: 850px) {
-  .input-todo-container, .todolist-container{
+  .input-todo-container, .todolist-container, .footer-container{
     width: 80%;
   }
   .input-todo-container h1{
@@ -103,9 +131,10 @@ ul{
   .todo{
     font-size: 1.2rem;
   }
+  
 }
 @media screen and (max-width: 600px) {
-  .input-todo-container, .todolist-container{
+  .input-todo-container, .todolist-container, .footer-container{
     width: 90%;
   }
   .input-todo-container h1{
@@ -125,5 +154,9 @@ ul{
   .todo{
     padding: 10px 10px;
     font-size: 1rem;
+  }
+  .footer-container{
+    flex-direction: column;
+    align-items: center;
   }
 }

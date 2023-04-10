@@ -4,7 +4,7 @@ const Todo = ({ id, todo, isComplete, handleMarkComplete, handleDelete }) => {
     return (
         <div className='todo'>
             <div>
-                <input type="checkbox" value={isComplete} onChange={() => handleMarkComplete(id)} />
+                <input type="checkbox" checked={isComplete} onChange={() => handleMarkComplete(id)} />
                 {todo}
             </div>
             <i className="fa-solid fa-trash" onClick={()=> handleDelete(id)}></i>
