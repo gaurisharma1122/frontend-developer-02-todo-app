@@ -21,8 +21,8 @@ const InputTodo = ({ todo, setTodo, handleAddTodo, theme, setTheme }) => {
                     }
                 </h1>
                 <form>
-                    <input type="text" placeholder='Enter a new task' value={todo} onChange={(e) => setTodo(e.target.value)} />
-                    <button onClick={(e) => handleClick(e)}>Add Todo</button>
+                    <input type="text" placeholder='Enter a new task' value={todo} onChange={(e) => setTodo(e.target.value)} required />
+                    <button type='submit' onSubmit={(e) => handleClick(e)}>Add Todo</button>
                 </form>
             </div>
         </div>

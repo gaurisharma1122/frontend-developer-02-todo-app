@@ -13,7 +13,6 @@ const getTheme= ()=>{
   }
 };
 
-
 function App() {
 
   const [todoList, setTodoList] = useState([]);
