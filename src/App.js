@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputTodo from "./components/InputTodo";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
+
+const getTheme= ()=>{
+  let appTheme= localStorage.getItem('theme');
+  if(appTheme){
+    return appTheme;
+  }
+  else{
+    return 'light-theme';
+  }
+};
+
 
 function App() {
 
   const [todoList, setTodoList] = useState([]);
   const [todo, setTodo] = useState('');
   const [taskFilter, setTaskFilter]= useState('All');
+  const [theme, setTheme]= useState(getTheme());
 
   const handleAddTodo = (todoItem) => {
     let newTodo = {
@@ -57,10 +69,21 @@ function App() {
     }
   };
 
+  useEffect(()=>{
+    if(theme==='light-theme'){
+      document.documentElement.className= 'light-theme';
+      localStorage.setItem('theme', 'light-theme');
+    }
+    else{
+      document.documentElement.className= 'dark-theme';
+      localStorage.setItem('theme', 'dark-theme');
+    }
+  }, [theme]);
+
 
   return (
     <div className="app" >
-      <InputTodo todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
+      <InputTodo todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} theme={theme} setTheme={setTheme}/>
       <TodoList todoList={todoList} handleMarkComplete={handleMarkComplete} handleDelete={handleDelete} handleTaskFilter={handleTaskFilter} />
       {
         todoList.length > 0 && <Footer handleCount={handleCount} handleClearComplete={handleClearComplete} taskFilter={taskFilter} setTaskFilter={setTaskFilter} />

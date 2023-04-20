@@ -4,16 +4,55 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+:root{
+  --bg_color_1: #111111;
+  --bg_color_2: #302f2f;
+  --text_color_1: #fff;
+  --text_color_2: #9b9b9b;
+  --red: #D70040;
+  --blue: rgb(83, 83, 238);
+  --black: #000;
+}
+.light-theme{
+  --bg_color_1: #fff;
+  --bg_color_2: #eeeeee;
+  --text_color_1: #111;
+  --text_color_2: #302f2f;
+  --red: #D70040;
+  --blue: rgb(83, 83, 238);
+  --btn_bg: #000;
+  --btn_text: #fff;
+  --btn_bg_hover: #fff;
+  --btn_text_hover: #000;
+}
+.dark-theme{
+  --bg_color_1: #111111;
+  --bg_color_2: #302f2f;
+  --text_color_1: #fff;
+  --text_color_2: #9b9b9b;
+  --red: #D70040;
+  --blue: rgb(83, 83, 238);
+  --btn_bg: #fff;
+  --btn_text: #000;
+  --btn_bg_hover: #000;
+  --btn_text_hover: #fff;
+}
 body{
-  background-color: #111111;
+  background-color: var(--bg_color_1);
 }
 ul{
   list-style: none;
 }
-.input-todo{
-  background-image: url('./images/background.png');
+.light-theme .input-todo{
+  background-image: url('./images/light-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+}
+.dark-theme .input-todo{
+  background-image: url('./images/dark-bg.jpg'), linear-gradient(rgb(0, 0, 0, 0.9), rgb(0, 0, 0, 0.7));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
 }
 .input-todo-container{
   width: 60%;
@@ -21,9 +60,14 @@ ul{
   padding: 6rem 0 2rem 0;
 }
 .input-todo-container h1{
+  display: flex;
+  justify-content: space-between;
   font-size: 4rem;
-  color: #fff;
+  color: var(--text_color_1);
   margin-bottom: 2rem;
+}
+.input-todo-container h1 i{
+  cursor: pointer;
 }
 .input-todo-container form{
   display: grid;
@@ -34,29 +78,30 @@ ul{
   font-size: 1.2rem;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid var(--text_color_1);
+  border-left: 1px solid var(--text_color_1);
+  border-bottom: 1px solid var(--text_color_1);
   border-right: none;
   background-color: transparent;
-  color: #fff;
+  color: var(--text_color_1);
 }
 .input-todo-container form input::placeholder{
-  color: #fff;
+  color: var(--text_color_1);
 }
 .input-todo-container form button{
   padding: 15px 25px;
   font-size: 1.2rem;
-  border: 1px solid #fff;
-  background-color: #fff;
+  border: 1px solid var(--btn_bg);
+  background-color: var(--btn_bg);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   font-weight: 700;
   cursor: pointer;
+  color: var(--btn_text);
 }
 .input-todo-container form button:hover{
-  background-color: #000;
-  color: #fff;
+  background-color: var(--btn_bg_hover);
+  color: var(--btn_text_hover);
 }
 .todolist-container, .footer-container{
   width: 60%;
@@ -64,11 +109,11 @@ ul{
   padding-top: 2rem;
 }
 .todo{
-  background-color: #302f2f;
+  background-color: var(--bg_color_2);
   padding: 15px 15px;
   margin-bottom: 10px;
   border-radius: 5px;
-  color: #fff;
+  color: var(--text_color_1);
   font-size: 1.4rem;
   font-weight: 200;
   display: flex;
@@ -84,14 +129,14 @@ ul{
   height: 1rem;
 }
 .todo i:hover{
-  color: #D70040;
+  color: var(--red);
   cursor: pointer;
 }
 .footer-container{
-  background-color: #302f2f;
+  background-color: var(--bg_color_2);
   border-radius: 5px;
   padding: 2rem 1rem;
-  color: #9b9b9b;
+  color: var(--text_color_2);
   font-size: 1rem;
   display: flex;
   justify-content: space-between;
@@ -104,16 +149,16 @@ ul{
   cursor: pointer;
 }
 .footer-container ul li:hover{
-  color: rgb(83, 83, 238);
+  color: var(--blue);
 }
 .clear-btn{
   cursor: pointer;
 }
 .clear-btn:hover{
-  color: #D70040;
+  color: var(--red);
 }
 .active-btn{
-  color: rgb(83, 83, 238);
+  color: var(--blue);
 }
 @media screen and (max-width: 850px) {
   .input-todo-container, .todolist-container, .footer-container{

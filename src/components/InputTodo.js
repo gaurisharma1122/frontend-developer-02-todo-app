@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const InputTodo = ({ todo, setTodo, handleAddTodo }) => {
+const InputTodo = ({ todo, setTodo, handleAddTodo, theme, setTheme }) => {
+
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -8,11 +9,17 @@ const InputTodo = ({ todo, setTodo, handleAddTodo }) => {
         setTodo('');
     };
 
-
     return (
         <div className='input-todo'>
             <div className="input-todo-container">
-                <h1>TODO APP</h1>
+                <h1>
+                    <span>TODO APP</span> 
+                    {
+                        theme==='dark-theme'?
+                        <i className="fa-solid fa-moon" onClick={()=> setTheme('light-theme')}></i>:
+                        <i className="fa-solid fa-sun" onClick={()=> setTheme('dark-theme')}></i>
+                    }
+                </h1>
                 <form>
                     <input type="text" placeholder='Enter a new task' value={todo} onChange={(e) => setTodo(e.target.value)} />
                     <button onClick={(e) => handleClick(e)}>Add Todo</button>
