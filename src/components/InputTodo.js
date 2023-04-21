@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 const InputTodo = ({ todo, setTodo, handleAddTodo, theme, setTheme }) => {
 
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        handleAddTodo(todo);
-        setTodo('');
+    const handleClick = () => {
+        if(todo.length>0){
+            handleAddTodo(todo);
+            setTodo('');
+        }
+        
     };
 
     return (
@@ -20,9 +22,9 @@ const InputTodo = ({ todo, setTodo, handleAddTodo, theme, setTheme }) => {
                         <i className="fa-solid fa-sun" onClick={()=> setTheme('dark-theme')}></i>
                     }
                 </h1>
-                <form>
-                    <input type="text" placeholder='Enter a new task' value={todo} onChange={(e) => setTodo(e.target.value)} required />
-                    <button type='submit' onSubmit={(e) => handleClick(e)}>Add Todo</button>
+                <form onSubmit={(e)=> e.preventDefault()}>
+                    <input type="text" placeholder='Enter a new task' value={todo} onChange={(e) => setTodo(e.target.value)}  />
+                    <button  onClick={handleClick}>Add Todo</button>
                 </form>
             </div>
         </div>
